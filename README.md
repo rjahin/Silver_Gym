@@ -34,40 +34,54 @@ The following is a list of constraints that are not captured by the ER diagram o
 Employee(empID, empFirstName, empLastName, empTitle, empSalary, empShift, empStatus)
 
 Customer(cusID, memID, cusFirstName, cusLastName, cusPhone, cusEmail, cusPaymentInfo, cusWaiver)
-	/nforeign key(memID) references Membership(memID)
+
+foreign key(memID) references Membership(memID)
 
 Membership(memID cusID, memType, memPrice, memStatus)
- 	/nforeign key(cusID) references Customer(cusID)
+ 
+foreign key(cusID) references Customer(cusID)
 
 Has(memStartDate, memEndDate)
 
 Section(secID, secName, secEquipType, secEquipID)
 
 Access(cusID secID, accessDate, accessTime)
-	/nforeign key(cusID) references Customer(cusID)
-	/nforeign key(secID) references Section(secID)
+
+foreign key(cusID) references Customer(cusID)
+
+foreign key(secID) references Section(secID)
  
 Offers(memID, offerDetails)
-	/nforeign key(memID) references Membership(memID)
+
+foreign key(memID) references Membership(memID)
  
 Amenities(ameID, ameName, ameService, ameHours)
 
 Handles(empID cusID memID)
-	foreign key(empID) references Employee(empID)
-	foreign key(cusID) references Customer(cusID)	 
-	foreign key(memID) references Membership(memID)
+
+foreign key(empID) references Employee(empID)
+
+foreign key(cusID) references Customer(cusID)	
+
+foreign key(memID) references Membership(memID)
  
 Supervises(empID, cusID)
-	foreign key(empID) references Employee(empID)
-	foreign key(cusID) references Customer(cusID)
+
+foreign key(empID) references Employee(empID)
+
+foreign key(cusID) references Customer(cusID)
  
 Maintains(empID, ameID)
-	foreign key(empID) references Employee(empID)
-	foreign key(ameID) references Amenities(ameID)
+
+foreign key(empID) references Employee(empID)
+
+foreign key(ameID) references Amenities(ameID)
  
 Manages(empID, secID)
-	foreign key(empID) references Employee(empID)
-	foreign key(secID) references Section(secID)
+
+foreign key(empID) references Employee(empID)
+
+foreign key(secID) references Section(secID)
 
 
 
